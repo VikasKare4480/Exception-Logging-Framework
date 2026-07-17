@@ -167,6 +167,9 @@ export default class LearningJavaScript extends LightningElement {
         let stringDemo = `My name is Vikas Laxman Kare and I am ${ageOfVikas} years old.`;
         console.log('stringDemo ' + stringDemo);
 
+
+        // OBJECTS IN JS
+
         let Vikaskareinfo = {
             name: 'Vikas Laxman Kare',
             age: 30,
@@ -225,7 +228,9 @@ export default class LearningJavaScript extends LightningElement {
         let objectWithOldVariable = {}
         let objectWithOldVariableCopy = Object.assign(objectWithOldVariable, userInfoCopy);
 
-        let objectWithAssign = structuredClone(userInfoCopy);
+
+        // DEEP COPY 
+        let objectWithAssign = structuredClone(userInfoCopy); 
         // FOR THE DEEP COPY USER SPREAD OPERATOR
         let objectWithSpeadOperator = {...userInfoCopy}; // THIS WILL CREATE THE  FULL COPY
 
@@ -240,9 +245,30 @@ export default class LearningJavaScript extends LightningElement {
 
         // freeze - it will not allow the any changes in the object
         Object.freeze(userInfoMap);
-    }
 
-    // OBJECTS IN JS
+        // LOOPS IN THE JS
+
+        // FOR LOOP
+
+        let favFruits = ['BANANA', 'APPLE', 'BLUE BERRY', 'CUSTORED APPLE', 'GRAPES'];
+
+        for(let i =0; i < favFruits.length; i++) {
+
+            console.log(favFruits[i]);
+        }
+        // FOR-IN LOOP
+
+        let student = {
+            name : 'Vasudev Kanta',
+            "roll No" : 20,
+            class : 8,
+            division : 'B',
+
+        };
+        // FOR-OF-LOOP
+        // DO LOOP
+        // DO WHILE LOOP 
+    }
 
     onclickofbutton1() {
 
