@@ -169,9 +169,15 @@ export default class LearningJavaScript extends LightningElement {
         let Vikaskareinfo = {
             name: 'Vikas Laxman Kare',
             age: 30,
-            email: 'vikas.laxman.kare@example.com'
+            email: 'vikaskare@gmail.com',
+            profile : "INDIAN",
+            "is Admin" : true
         };
+        Vikaskareinfo[country] =  'India';
+        Vikaskareinfo['Role'] = 'Admin';
     }
+
+    // OBJECTS IN JS
 
     onclickofbutton1() {
 
