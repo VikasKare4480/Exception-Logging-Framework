@@ -263,15 +263,39 @@ export default class LearningJavaScript extends LightningElement {
             "roll No" : 20,
             class : 8,
             division : 'B',
-
         };
+
+        for(let key in student) {
+            alert(student[key]);
+        } 
         // FOR-OF-LOOP
-        // DO LOOP
+
+        let teacherMap = new Map(); 
+        teacherMap.set('Name', 'Mali Madam');
+        teacherMap.set('Subject', 'Biology');
+        teacherMap.set('Experience', 14);
+        teacherMap.set('Grade', 'A++');
+        teacherMap.set('Role', 'Dept Head');
+
+        for(let key of teacherMap.keys()) {
+            alert(teacherMap.get(key));
+        }
+
+        // WHILE LOOP
+        let iteratorVar = 1;
+        while(iteratorVar <= 10) {
+
+            alert(iteratorVar);
+            i++;
+        }
         // DO WHILE LOOP 
+        // USE WHEN WE HAVE TO EXECUTE THE CODE AT LEAST ONCE BEFORE CONDTION CHECK
+        do {
+            iteratorVar--;
+        }while(iteratorVar >= 0);
     }
 
     onclickofbutton1() {
-
         console.log('onclickofbutton1 called');
     }
 }
