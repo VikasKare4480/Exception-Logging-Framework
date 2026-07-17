@@ -1,6 +1,7 @@
 import { LightningElement } from 'lwc';
 
 import setAndMap from './SetAndMap';
+import EmployeeNumber from '@salesforce/schema/User.EmployeeNumber';
 
 export default class LearningJavaScript extends LightningElement {
 
@@ -171,10 +172,59 @@ export default class LearningJavaScript extends LightningElement {
             age: 30,
             email: 'vikaskare@gmail.com',
             profile : "INDIAN",
-            "is Admin" : true
+            "is Admin" : true,
+            EmployeeNumber : 'GANG002',
+            Languages : ['Hindi', 'English', 'Marathi'],
+            reportees : {
+                reportee1 : {
+                    name : 'Vikas',
+                    EmployeeNumber : 'GANG002'
+                },
+                reportee2 : {
+                    name : 'Vikas',
+                    EmployeeNumber : 'GANG002'
+                }, 
+                reportee3 : {
+                    name : 'Vikas',
+                    EmployeeNumber : 'GANG002'
+                } 
+            }
         };
+        let objectWithObjectCreatemethd = Object.create(); // WILL ALWAYS RETURN
+        let testObject = new  Object({name : 'Vikas', fatherName : "Laxamn", Surname : "Kare"});
         Vikaskareinfo[country] =  'India';
         Vikaskareinfo['Role'] = 'Admin';
+
+        // CAEATION OBJECT FROM MAP 
+
+        let userInfoMapCopy = userInfoMap;
+        let objectFromMap = Object.fromEntries(userInfoMap);
+
+        // GET THE KEYS FROM MAP
+        let keysFromObject = objectFromMap.keys()
+
+        // GET THE VALUES FROM THE OBJECT
+        let valuesFromObject = objectFromMap.values();
+
+        // GET THE ALL THE ENTRIES OF THE OBJECT
+        let entriesOfObject = objectFromMap.entries();
+
+        // COPY THE DATA TO ANOTHER OBJECT FROM OLD OBJ     
+
+        // IF YOU WILL DIRECTE ASSING THE OBJECT TO ANOTHER ONE THE IT WILL ON COPY THE REFERENCE OF FIRST ONE 
+        let userInfoCopy = userInfoMap; // if changes will be made in any then chagnes will be visible to all of them
+
+
+        // BEST PRACTICES ARE 
+
+        // WITH JSON PARSING
+        let objectWithJsonParsing = JOSN.parse(JSON.stringlyFy(userInfoCopy));
+
+        // with assing method SHALLOW COPY ONLY NESTEST OBJECTS OR AARAYS WILL NOT BE COPIED
+        let objectWithAssing = Object.assign({}, userInfoCopy); // THIS WILL COPY THE ALL THE DATA FROM THE USER INFO COPY TO NEW 
+        let objectWithOldVariable = {}
+        let objectWithOldVariableCopy = Object.assign(objectWithOldVariable, userInfoCopy);
+
     }
 
     // OBJECTS IN JS
