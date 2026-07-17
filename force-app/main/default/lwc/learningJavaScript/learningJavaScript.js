@@ -293,6 +293,13 @@ export default class LearningJavaScript extends LightningElement {
         do {
             iteratorVar--;
         }while(iteratorVar >= 0);
+
+        // ARRAYS IN JAVASCRIPT
+
+        // WAYS OF DECLATION OF THE ARRAYS
+        let friends = ['Atul', 'Tejas', 'Mansi', 10];
+        friends.add('Anil');
+        console.log(friends[2]); // MANSI
     }
 
     onclickofbutton1() {
