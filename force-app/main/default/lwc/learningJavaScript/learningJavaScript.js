@@ -225,6 +225,21 @@ export default class LearningJavaScript extends LightningElement {
         let objectWithOldVariable = {}
         let objectWithOldVariableCopy = Object.assign(objectWithOldVariable, userInfoCopy);
 
+        let objectWithAssign = structuredClone(userInfoCopy);
+        // FOR THE DEEP COPY USER SPREAD OPERATOR
+        let objectWithSpeadOperator = {...userInfoCopy}; // THIS WILL CREATE THE  FULL COPY
+
+        // HASOWNPROPERTY CHECKES DOES KEY EXIST OR NOT 
+        let propertyexists = userInfoCopy.hasOwnProperty('name'); // return true of key exists
+
+        // seal object so changes will be done but not deleted
+        Object.seal(userInfoCopy);
+
+        userInfoCopy.name = 'Test Name'; 
+        delete userInfoCopy.name; // this will not be allowd
+
+        // freeze - it will not allow the any changes in the object
+        Object.freeze(userInfoMap);
     }
 
     // OBJECTS IN JS
