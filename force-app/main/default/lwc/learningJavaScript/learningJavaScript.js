@@ -5,6 +5,11 @@ import EmployeeNumber from '@salesforce/schema/User.EmployeeNumber';
 
 export default class LearningJavaScript extends LightningElement {
 
+
+    onclickofbutton1() {
+        console.log('onclickofbutton1 called');
+    }
+
     constructor() {
         console.log('Learning JavaScript');
         super();
@@ -294,15 +299,110 @@ export default class LearningJavaScript extends LightningElement {
             iteratorVar--;
         }while(iteratorVar >= 0);
 
-        // ARRAYS IN JAVASCRIPT
+        // LET'S LEARN ABOUT JS ARRAYS 
 
         // WAYS OF DECLATION OF THE ARRAYS
-        let friends = ['Atul', 'Tejas', 'Mansi', 10];
-        friends.add('Anil');
-        console.log(friends[2]); // MANSI
-    }
+        let myFriends = ['Atul', 'Tejas', 'Mansi'];
 
-    onclickofbutton1() {
-        console.log('onclickofbutton1 called');
-    }
+        let lengthOfArray = myFriends.length;
+        // ADD() ADDS THE NEW ELEMENT TO THE ARRAY
+        myFriends.add('Anil');
+        let atulsFriends = ['Vasu', 'Badal', 'Dalla'];
+
+        // concate() -- ADDS THE TWO ARRAYS AND RETURNS THE NEW ARRAY
+        let tejasFriends = atulsFriends.concat(myFriends);
+
+        // EVERY() METOHOD - IT WILL CHECK FOR THE CONDTION FOR EVERU ELEMENT IN THE ARRAY
+        let numbers = [10, 20, 39, 83, 33, 44, 64, 87];
+        numbers.every(function(
+            currentValue, index, originalArray) {
+                console.log(index);
+                return currentValue > 10
+            }
+        )
+
+        // some() it will check for any element if satsfy then will return true
+
+        let studentsMarks = [87, 88, 98, 100, 87, 88];
+        studentsMarks.some(
+            function(currentValue, index, originalArray) {
+                return currentValue > 100
+            }
+        );
+
+        // CREATION Array FROM set 
+        let set = new Set();
+        set.add(10);
+        set.add(100);
+        set.add(300);
+        let arartFromSet = Array.from(set);
+     
+        // forEach() method only works with the array
+
+        let newArray = Array.from('I\m vikas kare');
+        if(Array.isArray(newArray)) {
+            newArray.forEach(
+                function(currentValue, index, copiesArray) {
+                    console.log(copiesArray[index]);
+                }
+            );
+        }
+
+        // includes() method
+
+        console.log(newArray.includes('v'));
+
+        // index of
+        console.log(newArray.indexOf('v'));
+
+        // join() return the string of all array elements with comma seperated by default we can also provide the seperator
+        console.log(newArray.join());
+
+        const fruits = [
+                        'Mango', 
+                        'Banana', 
+                        'Apple', 
+                        'Grapes', 
+                        'Orange', 
+                        'Strawberry', 
+                        'Watermelon', 
+                        'Papaya', 
+                        'Pineapple', 
+                        'Kiwi'
+                    ];
+        // POP() - REMOVES THE LAST ELMENT OF THE ARRAY AND RETURNS THE SAME
+
+        fruits.pop(); // removes kivi and returns the same
+
+        // push() adds element to the araray 
+        fruits.push('Vikas', 'Kare');
+
+        // shift() removes the  first element of the array 
+        fruits.shift(); // will remove the mango
+                    
+        // unshift()
+        fruits.unshift('----Select One-----'); // Will be addded at the start of the array
+
+        // slice()
+        let slicedArray = fruits.slice(0, 4); 
+
+        // splice() adding elements in the array at specific index
+        // let splicedArray = fruits.splice(index, numberOfElementsTodelete, comma seperatedelements);
+        let splicedArray = fruits.splice(3, 0, 'SplicedElement');
+
+        // to remove the elements from the array with splice(inde. numberOfElementsToRemove)
+        let splicedRemove = fruits.splice(3, 1); // it will remove SplicedElement
+
+        // toString() - Convert the array into string
+        let arrayString = fruits.toString();     
+        
+        //  values() - it will return the Array iterator for the array values
+        let arrayValues = fruits.values();
+
+        // lastIndexOf(element) 
+        let lastIndexOfMango = fruits.lastIndexOf('Mango');
+
+        // firstIndex(element)
+        let firstIndexOf = fruits.firstIndexOf('Mango');
+    } 
 }
