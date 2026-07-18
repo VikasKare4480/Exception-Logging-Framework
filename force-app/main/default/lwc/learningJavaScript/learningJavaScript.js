@@ -590,6 +590,159 @@ export default class LearningJavaScript extends LightningElement {
         }
         unnamedFuncs('Vikas Kare');
 
+        // ARROW / FAT FUNCTIONS 
+
+        let sumwithArrowFunctions = (a, b) => {
+            return a + b;
+        };
+        sumwithArrowFunctions();
+
+        let sumwithArrowFunctions1 = (a, b) => ({Name : 'Vikas'})
+        sumwithArrowFunctions1(); // WILL RETURN WHOLE OBJECT
+
+        () => 'HELLO';
+
+        // LOG METHODS 
+
+        let laptopInfoForLogging = {
+            Name : 'HP Pavillion',
+            Type : 'Gaming',
+            Color : 'Black',
+            RAM : 8,
+            CORES : 4,
+            ISUNDERCOVER : function() {
+
+                return `${this.Name} is under cover`;
+            },
+            CameraWorking : true
+        };
+
+        console.log('laptopInfoForLogging -> ' , laptopInfoForLogging);
+        console.table(laptopInfoForLogging);
+        // console.error('Error from console.error ');
+        console.debug(laptopInfoForLogging);
+
+        console.group('GRP1'); // GROUPING OF THE LOGS
+        console.log('Inside the GRP1');
+        console.group('GRP-1-1');
+        console.log('inside GRP-1-1');
+        console.groupEnd('GRP-1-1');
+        console.groupEnd('GRP1');
+
+        fruits.forEach((item) => {
+            console.log(item);
+        });
+
+        // setTimeOut and setInterwalMethod
+
+        let testSetTimeOut = setTimeout(
+            function() {
+                alert('Hey Vikas Kare');
+            }, 1000
+        );
+
+        // calling insiude another func
+        function getCube(a) {
+            alert('india');
+            alert( a * a * a);
+        }
+        let cubeOf2 = setTimeout(() => getCube(2), 100000);
+        let cubeOf3 = setTimeout(getCube, 4000, 2);    
+
+        // setInterval();
+
+        function printTime() {
+
+            let date = new Date();
+            let time = date.toLocaleTimeString();
+            console.log('Time is ', time);
+        }
+        const printTimeProp = setInterval(printTime, 1000);
+
+        // Classes in JS
+
+        let classDef = class {
+
+            
+        }
+
+        let classVariable = class Person {
+            constructor(name) {
+                this.name = name;
+            }
+            sayHello() {
+                alert('Hello');
+            }
+        }
+        let personInstance = new classVariable('VikasKare');
+
+        // function constructor
+
+        function Animal(name, age) {    
+            this.name = name;
+            this.age = age;
+        }
+        Animal.prototype.sayName = function() {
+
+            alert(this.name);
+        }
+
+        let freddy = new Animal();
+        freddy.sayHello();
         
+        class User {
+            constructor(name) {
+                this.name = name;
+            }
+            sayHello() {
+                alert(`Hey ${this.name}, How are you?`);
+            }
+        }
+        class Admin extends User {
+            constructor(name) {
+                super(name);
+            }
+            sayHi() {
+                alert(`Hey ${this.name}, How are you?`);
+            }
+        }
+        let adminAmit = new Admin('Amit');
+        adminAmit.sayHi();
+        adminAmit.sayHello();
+
+        // PRMISES IN THE JS 
+
+        let newPromise = new Promise((resolved, rejected) => {
+            resolved('Resolved');
+            rejected('Rejected');
+        });
+
+
+        // resilt will be passed to the .then method
+        newPromise.then( (result) => {
+            alert(result);
+        }) .catch((error) => {
+            alert(error);
+        }).finally(() => {
+            
+        });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
