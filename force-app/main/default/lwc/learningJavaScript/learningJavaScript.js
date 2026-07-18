@@ -520,5 +520,76 @@ export default class LearningJavaScript extends LightningElement {
                 return 0;
             }
         );
+
+        // FUNCTIONS IN THE JAVASCRIPT
+        // DECALATIONS 
+
+        function fooBar(a, b) {
+            return a + b;
+        }
+        fooBar(10, 20);
+
+        function sayHello() {
+            alert('Hello');
+            return;
+        }
+        sayHello();
+
+        let makeMeMorePositive = function youAreAlredyPositive() {  
+            return 'Be Positive';
+        }
+        makeMeMorePositive();
+
+        // closure
+        let nestedFunction = function doFoo(name) {
+
+            let innerReturn = function innerFunction() {
+                return name;
+            }
+            return innerReturn;
+        }
+        console.log(nestedFunction('Vikas')()); // returns the inner function and the calls the inner function
+
+        let nestedFunctionFunctionExpressions = function(name) {
+
+            let innerReturn = function() {
+                return name;
+            }
+            return innerReturn;
+        }
+        console.log(nestedFunctionFunctionExpressions('Vikas')()); 
+
+
+        // fuction inside objcts
+
+        let laptopInfo = {
+            Name : 'HP Pavillion',
+            Type : 'Gaming',
+            Color : 'Black',
+            RAM : 8,
+            CORES : 4,
+            ISUNDERCOVER : function() {
+
+                return `${this.Name} is under cover`;
+            },
+            CameraWorking : true
+        };
+        laptopInfo.ISUNDERCOVER();
+
+        // self calling functions 
+
+        let selfcallingFunction = function secalling() {
+
+            alert('self calling function is called');
+        }();
+
+        // unnamed functions OR function expressions
+
+        let unnamedFuncs = function(name) {
+            return name;
+        }
+        unnamedFuncs('Vikas Kare');
+
+        
     }
 }
