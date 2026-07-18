@@ -404,5 +404,121 @@ export default class LearningJavaScript extends LightningElement {
 
         // firstIndex(element)
         let firstIndexOf = fruits.firstIndexOf('Mango');
-    } 
+
+        // filter() 
+        let filtersArray = fruits.filter(
+            function(currentElement, index, fruitsOriginal) {
+                return currentElement.length > 5
+            }
+        );
+
+
+        // find() 
+        let findMango = fruits.find(
+            function(current, index, fruitsOriginal) {
+                return current === 'Mango';
+            }
+        );
+
+        // reduce(accumulator, callback function(currentval, index , orginalArray), initialValue - 0) method
+        // ALWAYS WORKS FROM LEFT TO RIGHT
+        var araryOfSquares = [1, 4, 9, 16, 25, 36, 49, 64, 79, 100];
+        // NOW LET SUM THE ARRAY ELEMENTS USING REDUCEMETOD()
+        let arraySum = araryOfSquares.reduce(
+            function(accumulator, currentValue, index, originalAray) {
+                return accumulator + currentValue;
+            }, 0
+        );
+        console.log(arraySum);
+
+        // USING ARROW FUNCTION 
+        let useArrorwFunctions = araryOfSquares.reduce(
+            (accumulator, currentValue) => {
+                return accumulator + currentValue;
+            }, 0
+        );
+
+        // reduceRight() - works from RIGHT TO LEFT
+        // else works same asa reduce()
+
+        let sfdcArray = ['S', 'F', 'D', 'C'];
+
+        let sfdcConcates = sfdcArray.reduceRight(
+            function(accumulator, currentValue){
+                return accumulator + currentValue;
+            }
+        );
+
+        // user arrow function
+        let reduceWithArrayFuction = sfdcArray.reduceRight(
+            (accumulator, currentValue) => {
+                return accumulator + currentValue;
+            }
+        );
+
+
+        // SORT() MEHTOD MAKE CHANGES IN THE SAME ARRAY NOT RERURNS THE NEW ARRAY
+        var araryOfSquares = [1, 4, 9, 16, 25, 36, 49, 64, 79, 100];    
+
+        araryOfSquares.sort(
+            function(a, b) {    
+                return a - b; // sort in ascending order
+            }
+        );
+
+        araryOfSquares.sort(
+            function(a, b) {
+                return b - a; // sort array in descending order
+            }
+        );
+
+        araryOfSquares.sort(
+            (a, b) => {
+
+                return a - b;
+            }   
+        );
+
+        // NOW SORT THE ARRAY OF OBJECTS
+
+        const sfAccounts = [
+            { id: 'acc1', name: 'TCS', rating: 'Warm', annualRevenue: 5000000, employees: 1200 },
+            { id: 'acc2', name: 'Infosys', rating: 'Hot', annualRevenue: 8500000, employees: 2500 },
+            { id: 'acc3', name: 'Wipro', rating: 'Cold', annualRevenue: 2300000, employees: 800 },
+            { id: 'acc4', name: 'Cognizant', rating: 'Hot', annualRevenue: 9100000, employees: 3100 },
+            { id: 'acc5', name: 'Tech Mahindra', rating: 'Warm', annualRevenue: 4200000, employees: 1500 }
+        ];
+
+        // sort based on numbers
+        sfAccounts.sort(
+            function(a, b) {
+                return a.annualRevenue - b.annualRevenue;
+            }
+        );
+        sfAccounts;
+
+        // now lets sort based on the String values
+
+        const sfAccountsStringSorting = [
+            { id: 'acc2', name: 'Infosys', rating: 'Hot', annualRevenue: 8500000, employees: 2500 },
+            { id: 'acc3', name: 'Wipro', rating: 'Cold', annualRevenue: 2300000, employees: 800 },
+            { id: 'acc1', name: 'TCS', rating: 'Warm', annualRevenue: 5000000, employees: 1200 },
+            { id: 'acc4', name: 'Cognizant', rating: 'Hot', annualRevenue: 9100000, employees: 3100 },
+            { id: 'acc5', name: 'Tech Mahindra', rating: 'Warm', annualRevenue: 4200000, employees: 1500 }
+        ];
+
+        sfAccountsStringSorting.sort(
+            (a, b) => {
+                let lowerA = a.rating.toLowerCase();
+                let lowerB = b.rating.toLowerCase();
+                if(lowerA < lowerB) {
+                    return -1;
+                }
+                if(lowerA > lowerB ) {
+                    return 1;
+                }
+                return 0;
+            }
+        );
+    }
 }
