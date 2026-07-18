@@ -714,9 +714,8 @@ export default class LearningJavaScript extends LightningElement {
 
         let newPromise = new Promise((resolved, rejected) => {
             resolved('Resolved');
-            rejected('Rejected');
+            // rejected('Rejected');
         });
-
 
         // resilt will be passed to the .then method
         newPromise.then( (result) => {
@@ -724,25 +723,89 @@ export default class LearningJavaScript extends LightningElement {
         }) .catch((error) => {
             alert(error);
         }).finally(() => {
-            
+            alert('Inside Finally Block');
         });
+
+        //  promise.reject()
+        Promise.reject(() => {
+            new Error('Error Occured');
+        }).then((result) => {
+            alert(result);
+        }).catch((error) => {
+            alert('Error Occred', error);
+        }).finally( () => {
+            alert('Inside Finally');
+        });
+
+        // Promise.resolve()
+        Promise.resolve((resovled) => {     
+            alert('Promise is resolved'); // never works
+        })
+        .then(() => {
+            alert('Yes promise is sucessfully resolved')
+        }).catch( () => {
+            alert('erorr Occured')
+        }).finally( () => {
+            alert('Inside Finally')
+        });
+
+        let promise1 = new Promise(
+            function(resolve, reject) {
+                setTimeout( () => {
+                    resolve('Car 1 has completed the Race');
+                }, 1000);
+            }
+        );
+        let promise2 = new Promise(
+            function(resolve, reject) {
+                setTimeout( () => {
+                    reject('Car 2 has completed the Race');
+                });
+            }
+        );
+        Promise.all([promise1, promise2])
+        .then( (result) => {
+            alert(result);
+        })
+        .catch( (error) => {
+            alert(error);
+        }) 
+        .finally( () => {
+            alert('Finally')
+        } )
+
+        // any([]) first completed promise will be retured in the result
+        Promise.any([promise1, promise2])
+        .then( (result) => {
+            alert(result);
+        })
+        .catch( (error) => {
+            alert(error);
+        }) 
+        .finally( () => {
+            alert('Finally')
+        } )
+
+        // all settled
+        Promise.allSettled([promise1, promise2])
+        .then( (result) => {
+            alert(result);
+        })
+        .catch( (error) => {
+            alert(error);
+        }) 
+        .finally( () => {
+            alert('Finally')
+        } )
+
+        // async functions - return the Promise.resolve()function
+        // below both the functions are same
+        async function ayncFinction() {
+            return 1;
+        }
+        
+        async function doAsycnCal() {
+            return Promise.resolve(1);
+        }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
