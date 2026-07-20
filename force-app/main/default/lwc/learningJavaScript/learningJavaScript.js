@@ -1,10 +1,8 @@
 import { LightningElement } from 'lwc';
-
 import setAndMap from './SetAndMap';
 import EmployeeNumber from '@salesforce/schema/User.EmployeeNumber';
 
 export default class LearningJavaScript extends LightningElement {
-
 
     onclickofbutton1() {
         console.log('onclickofbutton1 called');
@@ -803,9 +801,55 @@ export default class LearningJavaScript extends LightningElement {
         async function ayncFinction() {
             return 1;
         }
-        
+
         async function doAsycnCal() {
             return Promise.resolve(1);
         }
+
+        async function testAwait() {
+            let result = await doAsycnCal();
+        }
+
+        // QueuerySelector
+        document.querySelector(".button2").style.backgroundColour = 'red';
+        document.querySelector(".button2").style.color = "white";
+
+        function handleOnClick(event) {
+            alert('Onclick clicked');
+            //document.querySelector(".para1").style.backgroundColor = "red";
+            //document.querySelector(".para1").style.color = "green";
+            let x;
+            x = document.querySelectorAll(".para1"); 
+            for(let i = 0; i < x.length; i++) {
+                x[i].style.color = "green"
+            }
+            document.querySelector("#para3").style.color = "red";
+            
+            document.querySelector("#blankPara").innerHTML = "Hello India";
+            
+            let currentTarget = event.currentTarget;
+            let target = event.target;
+            console.log('currentTarget', currentTarget);
+            console.log(currentTarget.dataset.recordId);
+            console.log(currentTarget.dataset.recordName);
+        }
+
+        function handleOnChange(inputElement) {
+            alert( inputElement.value);
+            inputElement.value='Vikas Kare'.toUpperCase();
+        }
+
+
+        // cration the custom event and dispatching them
+
+        let customEvent = new CustomEvent(
+            "Start", {
+                detail : {
+                    countyName : "India"
+                }
+            }
+        );
+
+        this.dispatchEvent(customEvent);
     }
 }
