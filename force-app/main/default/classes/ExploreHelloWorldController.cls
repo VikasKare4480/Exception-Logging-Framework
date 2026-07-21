@@ -20,8 +20,25 @@ public with sharing class ExploreHelloWorldController {
             SELECT ID, Name, Phone, Title, Email, FirstName, LastName, Account.Name
             FROM Contact
             WHERE AccountId = :accId
+            WITH USER_MODE
             LIMIT 100
         ];
         return contactList;
+    }
+
+    @auraEnabled(cacheable=true)
+    public static string updateContacts(Object contactData) {
+
+        List<Contact> contactsToUpdate = (List<Contact>) JSON.deserialize(
+            JSON.serialize(contactData), List<Contact>.class
+        );
+
+        try {
+            update contactsToUpdate;
+             return 'Success: contacts updated successfully';
+        }catch(Exception e) {
+
+            return 'The following exception has occurred: ' + e.getMessage();
+        }
     }
 }

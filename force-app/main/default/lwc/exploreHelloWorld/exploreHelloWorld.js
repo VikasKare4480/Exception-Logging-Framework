@@ -2,6 +2,7 @@ import { api, LightningElement, wire, track } from 'lwc';
 import stringManupulation from './stringManupulation';
 import doMultiplication from './doMultiplication';
 import getContactsData from '@salesforce/apex/ExploreHelloWorldController.getContactsData';
+import updateContacts from '@salesforce/apex/ExploreHelloWorldController.updateContacts';
 export default class ExploreHelloWorld extends LightningElement {
 
     @api componentTitle;
@@ -11,21 +12,6 @@ export default class ExploreHelloWorld extends LightningElement {
     table = true;
     data;
     error;
-
-    // set setFistName(firstName) {
-    //     this.firstName = firstName;
-    // }
-
-    // set setLastName(lastName) {
-    //     this.lastName = lastName;
-    // }
-
-    // get getFistName() {
-    //     return this.firstName;
-    // }
-    // get getLastName() {
-    //     return this.lastName;
-    // }
 
     constructor() {
         super();
@@ -45,4 +31,20 @@ export default class ExploreHelloWorld extends LightningElement {
             this.error = error;
         }
     }
+
+     // set setFistName(firstName) {
+    //     this.firstName = firstName;
+    // }
+
+    // set setLastName(lastName) {
+    //     this.lastName = lastName;
+    // }
+
+    // get getFistName() {
+    //     return this.firstName;
+    // }
+    // get getLastName() {
+    //     return this.lastName;
+    // }
+
 }
