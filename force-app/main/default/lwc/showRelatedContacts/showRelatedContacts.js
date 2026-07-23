@@ -1,12 +1,18 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import getAccountContacts from '@salesforce/apex/ShowRelatedContactsController.getAccountContacts';
+import getOpportunities from '@salesforce/apex/ShowRelatedContactsController.getOpportunities'
+import ACCOUNT_NAME from '@salesforce/schema/Account.Name'
 
-// टेबलचे कॉलम्स निश्चित करणे
 const COLUMNS = [
     { label: 'First Name', fieldName: 'FirstName', type: 'text' },
     { label: 'Last Name', fieldName: 'LastName', type: 'text' },
     { label: 'Email', fieldName: 'Email', type: 'email' },
     { label: 'Phone', fieldName: 'Phone', type: 'phone' }
+];
+
+const COLUMNS_OPP = [
+    {},
+    {}
 ];
 
 export default class ShowRelatedContacts extends LightningElement {
@@ -15,6 +21,8 @@ export default class ShowRelatedContacts extends LightningElement {
     contacts;
     errors;
     columns = COLUMNS;
+    opportunityData;
+    opportunityErrors;
 
     connectedCallback() {
         console.log('recordId : ' + this.recordId);
@@ -36,4 +44,16 @@ export default class ShowRelatedContacts extends LightningElement {
     }
 
 
+    @wire(getOpportunities, {accountId : '$recordId'})
+    getWireOpportunities({error, data}) {
+
+        if(error) {
+            this.opportunityErrors = error;
+            this.opportunityData = undefined
+        }
+        if(data) {
+            this.opportunityData = data;
+            this.opportunityErrors = undefined;
+        }
+    }
 }
